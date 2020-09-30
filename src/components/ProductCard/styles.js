@@ -13,6 +13,11 @@ export const Group = styled.div`
 export const Card = styled.div`
   background: red;
   border: solid 1px grey;
+  margin-bottom: 1em;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 `;
 
 export const Title = styled.h3`
