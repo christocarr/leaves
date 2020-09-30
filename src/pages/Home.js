@@ -13,12 +13,14 @@ function Home() {
   return (
     <>
       <Header />
-      {products.map((product) => (
-        <ProductCard key={product.id}>
-          <ProductCard.Title>{product.name}</ProductCard.Title>
-          <ProductCard.Description>{product.desc}</ProductCard.Description>
-        </ProductCard>
-      ))}
+      <ProductCard.Group>
+        {products.map((product) => (
+          <ProductCard key={product.id}>
+            <ProductCard.Title>{product.name}</ProductCard.Title>
+            <ProductCard.Description>{product.desc}</ProductCard.Description>
+          </ProductCard>
+        ))}
+      </ProductCard.Group>
     </>
   );
 }
