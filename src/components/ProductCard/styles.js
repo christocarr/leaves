@@ -7,6 +7,7 @@ export const Group = styled.div`
   align-items: center;
   width: 90vw;
   margin: 0 auto;
+  padding: 1em;
 `;
 
 export const Card = styled.div`
