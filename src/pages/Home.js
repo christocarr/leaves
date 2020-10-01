@@ -1,14 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Header from "../components/Header";
 import ProductCard from "../components/ProductCard";
-import { productData } from "../productData";
+import productContext from "../context/productContext";
 
 function Home() {
+  const productsData = useContext(productContext);
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    setProducts(productData);
-  }, []);
+    setProducts(productsData);
+  }, [productsData]);
 
   return (
     <>
