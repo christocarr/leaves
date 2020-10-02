@@ -5,17 +5,31 @@ import productContext from "../context/productContext";
 
 function Home() {
   const productsData = useContext(productContext);
-  const [products, setProducts] = useState([]);
+  const [searchResults, setSearchResults] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
-    setProducts(productsData);
-  }, [productsData]);
+    const filteredProducts = productsData.filter(({name}) =>
+      name.toLowerCase().includes(searchTerm)
+    );
+    setSearchResults(filteredProducts);
+  }, [productsData, searchTerm]);
+
+  const handleChange = (ev) => {
+    setSearchTerm(ev.target.value.toLowerCase());
+  };
 
   return (
     <>
       <Header />
+      <input
+        type="text"
+        placeholder="search"
+        value={searchTerm}
+        onChange={handleChange}
+      />
       <ProductCard.Group>
-        {products.map((product) => (
+        {searchResults.map((product) => (
           <ProductCard key={product.id}>
             <ProductCard.Title>{product.name}</ProductCard.Title>
             <ProductCard.Description>{product.desc}</ProductCard.Description>
