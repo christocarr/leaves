@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import Header from "../components/Header";
+import Search from "../components/Search";
 import ProductCard from "../components/ProductCard";
 import productContext from "../context/productContext";
 
@@ -9,25 +10,22 @@ function Home() {
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
-    const filteredProducts = productsData.filter(({name}) =>
-      name.toLowerCase().includes(searchTerm)
+    const filteredProducts = productsData.filter(({ name }) =>
+      name.toLowerCase().includes(searchTerm.toLowerCase())
     );
     setSearchResults(filteredProducts);
   }, [productsData, searchTerm]);
 
-  const handleChange = (ev) => {
-    setSearchTerm(ev.target.value.toLowerCase());
-  };
-
   return (
     <>
       <Header />
-      <input
+      <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+      {/* <input
         type="text"
         placeholder="search"
         value={searchTerm}
         onChange={handleChange}
-      />
+      /> */}
       <ProductCard.Group>
         {searchResults.map((product) => (
           <ProductCard key={product.id}>
