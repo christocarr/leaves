@@ -20,12 +20,6 @@ function Home() {
     <>
       <Header />
       <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-      {/* <input
-        type="text"
-        placeholder="search"
-        value={searchTerm}
-        onChange={handleChange}
-      /> */}
       <ProductCard.Group>
         {searchResults.map((product) => (
           <ProductCard key={product.id}>
