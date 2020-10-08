@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import Header from '../components/Header';
 import Search from '../components/Search';
-import Sort from '../components/Sort'
+import Sort from '../components/Sort';
 import ProductCard from '../components/ProductCard';
 import productContext from '../context/productContext';
 
@@ -10,18 +10,28 @@ function Home() {
 	const [searchResults, setSearchResults] = useState([]);
 	const [searchTerm, setSearchTerm] = useState('');
 	const [sortSelect, setSortSelect] = useState('');
+	const [sortedData, setSortedData] = useState([]);
 
 	useEffect(() => {
-		const filteredProducts = productsData.filter(({ name }) =>
+
+		const lowToHighPriceSort = productsData.sort((a, b) => {
+			return a.price < b.price ? 1 : -1;
+		});
+
+		setSortedData(lowToHighPriceSort);
+
+		const filteredProducts = sortedData.filter(({ name }) =>
 			name.toLowerCase().includes(searchTerm.toLowerCase())
 		);
+		
 		setSearchResults(filteredProducts);
-	}, [productsData, searchTerm]);
+
+	}, [productsData, searchTerm, sortSelect, sortedData]);
 
 	return (
 		<>
 			<Header />
-      <Sort sortSelect={sortSelect} setSortSelect={setSortSelect} />
+			<Sort sortSelect={sortSelect} setSortSelect={setSortSelect} />
 			<Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
 			<ProductCard.Group>
 				{searchResults.map((product) => (
