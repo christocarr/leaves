@@ -25,6 +25,7 @@ function Home() {
           <ProductCard key={product.id}>
             <ProductCard.Title>{product.name}</ProductCard.Title>
             <ProductCard.Description>{product.desc}</ProductCard.Description>
+            <ProductCard.Price>£{product.price}</ProductCard.Price>
           </ProductCard>
         ))}
       </ProductCard.Group>
