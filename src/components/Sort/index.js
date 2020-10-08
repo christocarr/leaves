@@ -9,6 +9,7 @@ function Sort({ sortSelect, setSortSelect, children, ...restProps }) {
 				onChange={({ target }) => setSortSelect(target.value)}
 			>
         {/* set default sort to most popular */}
+				<option value="popularity">Sort by: Popularity</option>
 				<option value="priceLowToHigh">Sort by: Price (low to high)</option>
 			</Select>
 		</Container>

@@ -13,9 +13,8 @@ function Home() {
 	const [sortedData, setSortedData] = useState([]);
 
 	useEffect(() => {
-
 		const lowToHighPriceSort = productsData.sort((a, b) => {
-			return a.price < b.price ? 1 : -1;
+			return a.price > b.price ? 1 : -1;
 		});
 
 		setSortedData(lowToHighPriceSort);
@@ -23,9 +22,8 @@ function Home() {
 		const filteredProducts = sortedData.filter(({ name }) =>
 			name.toLowerCase().includes(searchTerm.toLowerCase())
 		);
-		
-		setSearchResults(filteredProducts);
 
+		setSearchResults(filteredProducts);
 	}, [productsData, searchTerm, sortSelect, sortedData]);
 
 	return (
