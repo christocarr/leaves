@@ -9,22 +9,23 @@ function Home() {
 	const productsData = useContext(productContext);
 	const [searchResults, setSearchResults] = useState([]);
 	const [searchTerm, setSearchTerm] = useState('');
-	const [sortSelect, setSortSelect] = useState('');
+	const [sortSelect, setSortSelect] = useState('popularity');
 	const [sortedData, setSortedData] = useState([]);
 
 	useEffect(() => {
-		const lowToHighPriceSort = productsData.sort((a, b) => {
-			return a.price > b.price ? 1 : -1;
-		});
+		setSortedData(productsData.sort((a, b) => a.popularity > b.popularity ? 1 : -1))
+	}, [productsData])
 
-		setSortedData(lowToHighPriceSort);
+	useEffect(() => {
+		// const lowToHighPriceSort = productsData.sort((a, b) => {
+		// 	return a.price > b.price ? 1 : -1;
+		// });
 
-		const filteredProducts = sortedData.filter(({ name }) =>
+		setSearchResults(sortedData.filter(({ name }) =>
 			name.toLowerCase().includes(searchTerm.toLowerCase())
-		);
+		));
 
-		setSearchResults(filteredProducts);
-	}, [productsData, searchTerm, sortSelect, sortedData]);
+	}, [searchTerm, sortedData]);
 
 	return (
 		<>
