@@ -11,6 +11,7 @@ function Sort({ sortSelect, setSortSelect, children, ...restProps }) {
         {/* set default sort to most popular */}
 				<option value="popularity">Sort by: Popularity</option>
 				<option value="priceLowToHigh">Sort by: Price (low to high)</option>
+				<option value="priceHighToLow">Sort by: Price (high to low)</option>
 			</Select>
 		</Container>
 	);
