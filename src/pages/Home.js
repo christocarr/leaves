@@ -16,6 +16,8 @@ function Home() {
 		const sorted = () => {
 			if (sortSelect === 'priceLowToHigh') {
 				return productsData.sort((a, b) => (a.price > b.price ? 1 : -1));
+			} else if (sortSelect === 'priceHighToLow') {
+				return productsData.sort((a, b) => (a.price < b.price ? 1: -1));
 			} else {
 				return productsData.sort((a, b) =>
 					a.popularity < b.popularity ? 1 : -1
