@@ -1,5 +1,5 @@
 import React from 'react';
-import { Group, Card, Title, Description, Price } from './styles';
+import { Group, Card, Title, Description, Price, AddToCart } from './styles';
 
 function ProductCard({ children, ...restProps }) {
 	return <Card>{children}</Card>;
@@ -22,6 +22,10 @@ ProductCard.Description = function ProductDesctiption({
 
 ProductCard.Price = function ProductPrice({ children, ...restProps }) {
 	return <Price>{children}</Price>;
+};
+
+ProductCard.AddToCart = function ProductAddToCart({ children, ...restProps }) {
+	return <AddToCart>{children}</AddToCart>;
 };
 
 export default ProductCard;

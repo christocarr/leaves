@@ -29,5 +29,8 @@ export const Description = styled.p`
 `;
 
 export const Price = styled.p`
-  color: white;
+	color: white;
+`;
+
+export const AddToCart = styled.button`
 `;

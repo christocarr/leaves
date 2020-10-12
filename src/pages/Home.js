@@ -11,6 +11,7 @@ function Home() {
 	const [searchTerm, setSearchTerm] = useState('');
 	const [sortSelect, setSortSelect] = useState('popularity');
 	const [sortedData, setSortedData] = useState([]);
+	const [cart, setCart] = useState([]);
 
 	useEffect(() => {
 		const sorted = () => {
@@ -35,7 +36,7 @@ function Home() {
 
 	return (
 		<>
-			<Header />
+			<Header cart={cart} />
 			<Sort sortSelect={sortSelect} setSortSelect={setSortSelect} />
 			<Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
 			<ProductCard.Group>
@@ -44,6 +45,7 @@ function Home() {
 						<ProductCard.Title>{product.name}</ProductCard.Title>
 						<ProductCard.Description>{product.desc}</ProductCard.Description>
 						<ProductCard.Price>£{product.price}</ProductCard.Price>
+						<ProductCard.AddToCart setCart={setCart}>Add to Cart</ProductCard.AddToCart>
 					</ProductCard>
 				))}
 			</ProductCard.Group>
